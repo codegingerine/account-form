@@ -14,7 +14,7 @@ export const MainStyled = styled.main`
   overflow: hidden;
   transition: all .2s ease;
 
-  ${media.desktop`
+  ${media.tablet`
     align-items: flex-start;
     padding: 56px 14px 94px 347px;
   `}
@@ -31,7 +31,7 @@ export const MainStyled = styled.main`
     transition: all .2s ease;
     z-index: -1;
 
-    ${media.desktop`
+    ${media.tablet`
       width: 660px;
       height: 616px;
       top: 0;
@@ -53,7 +53,7 @@ export const MainStyled = styled.main`
 export const MainContentStyled = styled.div`
   width: 292px;
   
-  ${media.desktop`
+  ${media.tablet`
     width: calc(256px + 472px);
   `}
 `;
@@ -66,7 +66,7 @@ export const MainTitle = styled.h1`
   margin-bottom: 28px;
   padding: 0 31px;
 
-  ${media.desktop`
+  ${media.tablet`
     font-size: 48px;
     line-height: 48px;
     margin: 0 0 48px 256px;

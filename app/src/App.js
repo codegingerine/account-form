@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import SetAccount from "View/SetAccount";
+import YourAccount from "View/YourAccount";
 
 import "Styles/reset.scss";
 import "Styles/global.scss";
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route component={SetAccount} exact path="/" />
+          <Route component={YourAccount} exact path="/" />
         </Switch>
       </Router>
     );
