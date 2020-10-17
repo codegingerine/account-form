@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ImageBoxStyled, LinesStyled } from "./ImageBox.styled";
 
-const ImageBox = ({ imgSrc }) => {
+const ImageBox = ({ imgSrc, className }) => {
   return (
-    <ImageBoxStyled imgSrc={imgSrc}>
+    <ImageBoxStyled className={className} imgSrc={imgSrc}>
       <LinesStyled />
     </ImageBoxStyled>
   );

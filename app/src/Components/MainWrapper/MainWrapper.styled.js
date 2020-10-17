@@ -16,6 +16,10 @@ export const MainStyled = styled.main`
 
   ${media.tablet`
     align-items: flex-start;
+    padding: 56px 14px 94px 167px;
+  `}
+
+  ${media.desktop`
     padding: 56px 14px 94px 347px;
   `}
 
@@ -51,6 +55,8 @@ export const MainStyled = styled.main`
 `;
 
 export const MainContentStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 292px;
   
   ${media.tablet`

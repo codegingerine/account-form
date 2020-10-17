@@ -11,6 +11,7 @@ export const ImageBoxStyled = styled.div`
   ${media.tablet`
     display: flex;
     justify-content: flex-end;
+    min-height: 556px;
   `}
 
   &:before {
@@ -22,6 +23,7 @@ export const ImageBoxStyled = styled.div`
     height: 100%;
     background: #242424 no-repeat;
     background-image: url(${({ imgSrc }) => imgSrc && imgSrc});
+    background-size: cover;
     z-index: -1;
   }
 `;
