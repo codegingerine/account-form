@@ -5,13 +5,13 @@ import yourAccountImg from "Assets/png/people.png";
 
 const YourAccount = () => {
   return (
-    <MainWrapper title="Your account">
+    <MainWrapper>
       <StepBox
+        title="Your account"
         imgSrc={yourAccountImg}
         formBarColor="#1BFEC0"
         description="Provide personal information so that we can create a new account for you."
       >
-        <p>TODO</p>
       </StepBox>
     </MainWrapper>
   );

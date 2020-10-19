@@ -1,21 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { MainStyled, MainContentStyled, MainTitle } from "./MainWrapper.styled";
+import { MainStyled } from "./MainWrapper.styled";
 
-const MainWrapper = ({ title, children }) => {
-  return (
-    <MainStyled>
-      <MainContentStyled>
-        <MainTitle>{title}</MainTitle>
-        {children}
-      </MainContentStyled>
-    </MainStyled>
-  );
+const MainWrapper = ({ children }) => {
+  return <MainStyled>{children}</MainStyled>;
 };
 
 MainWrapper.propTypes = {
   children: PropTypes.any.isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default MainWrapper;

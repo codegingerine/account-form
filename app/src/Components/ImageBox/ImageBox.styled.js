@@ -5,13 +5,12 @@ import { ReactComponent as Lines } from "Assets/svg/lines.svg";
 export const ImageBoxStyled = styled.div`
   display: none;
   position: relative;
-  width: 256px;
+  width: 254px;
   min-height: 552px;
 
   ${media.tablet`
     display: flex;
     justify-content: flex-end;
-    min-height: 556px;
   `}
 
   &:before {
