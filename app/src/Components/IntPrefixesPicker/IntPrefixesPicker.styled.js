@@ -17,7 +17,7 @@ const PadMix = css`
   `}
 `;
 
-export const SelectStyled = styled(Field)`
+export const SelectStyled = styled.select`
   position: relative;
   width: 114px;
   font-family: "Roboto", sans-serif;
