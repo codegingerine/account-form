@@ -10,6 +10,7 @@ export const MainStyled = styled.main`
   height: 100%;
   min-height: 100vh;
   width: 100%;
+  overflow: hidden;
   transition: all .2s ease;
 
   &:before {
