@@ -10,7 +10,7 @@ import { PhoneBoxStyled, PhoneFieldBoxStyled, IntPrefixesPickerStyled } from "./
 const YourAccount = () => {
   const initialValues = {
     name: "",
-    mobilePrefix: "",
+    mobilePrefix: "+48 (PL)",
     mobilePhone: "",
   };
 
@@ -27,7 +27,7 @@ const YourAccount = () => {
   });
 
   const onSubmit = (values) => {
-    console.log("Form data: ", values);
+    console.log("Form data to submit: ", values);
   };
 
   return (
@@ -70,9 +70,8 @@ const YourAccount = () => {
                   <PhoneBoxStyled>
                     <IntPrefixesPickerStyled
                       name="mobilePrefix"
-                      id="mobilePrefix"
-                      // value={values.mobilePrefix}
-                      // onChange={handleChange}
+                      value={values.mobilePrefix}
+                      onChange={handleChange}
                     />
                     <PhoneFieldBoxStyled
                       type="tel"

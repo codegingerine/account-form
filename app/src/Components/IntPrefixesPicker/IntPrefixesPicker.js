@@ -23,7 +23,6 @@ const IntPrefixesPicker = ({ className, name, value, onChange }) => {
     fetch(`https://api.ipgeolocationapi.com/countries`)
       .then((res) => res.json())
       .then((data) => {
-        const initPrefix = "";
         setCountriesOptions(data);
         setPrefixOptions([...Object.keys(data)].sort());
         console.log("data:", data);
@@ -32,6 +31,7 @@ const IntPrefixesPicker = ({ className, name, value, onChange }) => {
 
   return (
     <SelectStyled
+      as="select"
       className={className}
       name={name}
       value={value}
@@ -45,6 +45,11 @@ const IntPrefixesPicker = ({ className, name, value, onChange }) => {
   );
 };
 
-IntPrefixesPicker.propTypes = {};
+IntPrefixesPicker.propTypes = {
+  className: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default IntPrefixesPicker;

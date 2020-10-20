@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { media } from "Utils/media";
+import { Field } from "formik";
 
 const InputPadMix = css`
   padding-top: 10px;
@@ -16,7 +17,7 @@ const PadMix = css`
   `}
 `;
 
-export const SelectStyled = styled.select`
+export const SelectStyled = styled(Field)`
   position: relative;
   width: 114px;
   font-family: "Roboto", sans-serif;
