@@ -4,14 +4,23 @@ import { Formik } from "formik";
 import MainWrapper from "Components/MainWrapper";
 import StepBox from "Components/StepBox";
 import FieldBox from "Components/FieldBox";
+import DatePicker from "Components/DatePicker";
+
 import yourAccountImg from "Assets/png/people.png";
-import { PhoneBoxStyled, PhoneFieldBoxStyled, IntPrefixesPickerStyled } from "./YourAccount.styled";
+import {
+  PhoneBoxStyled,
+  PhoneFieldBoxStyled,
+  IntPrefixesPickerStyled,
+} from "./YourAccount.styled";
 
 const YourAccount = () => {
   const initialValues = {
     name: "",
     mobilePrefix: "+48 (PL)",
     mobilePhone: "",
+    day: "1",
+    month: "January",
+    year: "1990",
   };
 
   const validationSchema = Yup.object().shape({
@@ -83,6 +92,16 @@ const YourAccount = () => {
                       errorMsg={errors.mobilePhone}
                     />
                   </PhoneBoxStyled>
+                </FieldBox>
+                <FieldBox label="Date of Birth">
+                  <DatePicker
+                    dayValue={values.day}
+                    monthValue={values.month}
+                    yearValue={values.year}
+                    onChangeDay={handleChange}
+                    onChangeMonth={handleChange}
+                    onChangeYear={handleChange}
+                  />
                 </FieldBox>
                 <button
                   type="submit"

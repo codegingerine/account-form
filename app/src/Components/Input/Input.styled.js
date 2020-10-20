@@ -18,9 +18,10 @@ const PadMix = css`
 
 export const InputStyled = styled.input`
   width: 100%;
-  font-size: 16px;
-  letter-spacing: 0.3px;
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.3px;
   color: #202020;
   ${InputPadMix}
   ${PadMix}

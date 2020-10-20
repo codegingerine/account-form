@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SelectStyled, OptionStyled } from "./Select.styled";
+import { v4 as uuidv4 } from "uuid";
+import {
+  SelectWrapperStyled,
+  SelectStyled,
+  OptionStyled,
+} from "./Select.styled";
 
 const Options = ({ options }) => (
   <>
@@ -17,16 +22,24 @@ const Select = ({
   onChange,
   options,
   children,
+  fullBorder,
+  removeIcon,
 }) => {
   return (
-    <SelectStyled
+    <SelectWrapperStyled
       className={className}
-      name={name}
-      value={value}
-      onChange={onChange}
+      fullBorder={fullBorder}
+      removeIcon={removeIcon}
     >
-      {children ? children : <Options options={options} />}
-    </SelectStyled>
+      <SelectStyled
+        name={name}
+        value={value}
+        onChange={onChange}
+        fullBorder={fullBorder}
+      >
+        {children ? children : <Options options={options} />}
+      </SelectStyled>
+    </SelectWrapperStyled>
   );
 };
 
@@ -36,7 +49,9 @@ Select.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.array,
-  children: PropTypes.any
+  children: PropTypes.any,
+  bottomBorder: PropTypes.string,
+  fullBorder: PropTypes.bool,
 };
 
 export default Select;

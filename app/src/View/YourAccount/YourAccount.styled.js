@@ -4,12 +4,12 @@ import IntPrefixesPicker from "Components/IntPrefixesPicker";
 
 export const PhoneBoxStyled = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
 `;
 
 export const PhoneFieldBoxStyled = styled(FieldBox)`
   flex-shrink: 1;
-  margin-left: 19px;
+  margin: 0 0 0 19px;
 `;
 
 export const IntPrefixesPickerStyled = styled(IntPrefixesPicker)`
