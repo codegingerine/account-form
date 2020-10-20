@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
-import { SelectStyled, OptionStyled } from "./IntPrefixesPicker.styled";
+import Select from "Components/Select";
+import { OptionStyled } from "./IntPrefixesPicker.styled";
 
 const Options = ({ prefixMapped, countriesMapped }) => (
   <>
@@ -30,26 +30,13 @@ const IntPrefixesPicker = ({ className, name, value, onChange }) => {
   }, []);
 
   return (
-    <SelectStyled
-      as="select"
-      className={className}
-      name={name}
-      value={value}
-      onChange={onChange}
-    >
+    <Select className={className} name={name} value={value} onChange={onChange}>
       <Options
         prefixMapped={prefixOptions}
         countriesMapped={countriesOptions}
       />
-    </SelectStyled>
+    </Select>
   );
-};
-
-IntPrefixesPicker.propTypes = {
-  className: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default IntPrefixesPicker;
