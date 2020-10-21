@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import MainWrapper from "Components/MainWrapper";
@@ -17,6 +17,12 @@ import {
 } from "./YourAccount.styled";
 
 const YourAccount = () => {
+  const [checked, setChecked] = useState(true);
+
+  const handleChecked = () => {
+    setChecked(!checked)
+  }
+
   const initialValues = {
     name: "",
     mobilePrefix: "+48 (PL)",
@@ -24,8 +30,6 @@ const YourAccount = () => {
     day: "1",
     month: "January",
     year: "1990",
-    chessNo: true,
-    chessYes: false,
   };
 
   const validationSchema = Yup.object().shape({
@@ -101,18 +105,16 @@ const YourAccount = () => {
                 <FieldBox label="Can you play chess?">
                   <CheckboxHolderStyled>
                     <Checkbox
-                      name="chessYes"
+                      name="playChess"
                       label="Yes"
-                      value={values.chessYes}
-                      onChange={handleChange}
-                      checked={values.chessYes}
+                      onChange={handleChecked}
+                      checked={!checked}
                     />
                     <Checkbox
-                      name="chessNo"
+                      name="playChessNot"
                       label="No"
-                      value={values.chessNo}
-                      onChange={handleChange}
-                      checked={values.chessNo}
+                      onChange={handleChecked}
+                      checked={checked}
                     />
                   </CheckboxHolderStyled>
                 </FieldBox>
