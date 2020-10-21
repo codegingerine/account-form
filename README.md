@@ -1,5 +1,5 @@
 # Set Account form
-
-### project page
-React, Styled-Components
+### React, Styled-Components
+Please check the CORS
+### preview
 https://codegingerine.github.io/account-form
