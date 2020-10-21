@@ -52,6 +52,7 @@ Select.propTypes = {
   children: PropTypes.any,
   bottomBorder: PropTypes.string,
   fullBorder: PropTypes.bool,
+  removeIcon:PropTypes.bool,
 };
 
 export default Select;

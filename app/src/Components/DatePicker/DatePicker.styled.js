@@ -4,7 +4,7 @@ import Select from "Components/Select";
 
 export const DatePickerStyled = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: baseline;
   justify-content: space-between;
 `;
 

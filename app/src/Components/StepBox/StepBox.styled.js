@@ -8,7 +8,6 @@ export const StepStyled = styled.section`
   flex-direction: column;
   max-width: 320px;
   padding: 25px 14px 30px;
-  overflow: hidden;
 
   ${media.tablet`
     max-width: none;
@@ -54,7 +53,8 @@ export const FormBoxStyled = styled.div`
       rgba(231, 232, 238, 0.15) 95.81%
     ),
     #fcfcfd;
-  padding: 16px 15px;
+  padding: 16px 15px 52px 15px;
+
 
   ${media.tablet`
     padding: 42px 51px;

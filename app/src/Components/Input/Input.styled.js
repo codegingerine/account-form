@@ -48,5 +48,9 @@ export const InputStyled = styled.input`
     css`
       color: #eb5757;
       border-color: #eb5757;
+
+      &:focus {
+        border-color: #eb5757;
+      }
     `}
 `;

@@ -5,12 +5,13 @@ import MainWrapper from "Components/MainWrapper";
 import StepBox from "Components/StepBox";
 import FieldBox from "Components/FieldBox";
 import DatePicker from "Components/DatePicker";
-
 import yourAccountImg from "Assets/png/people.png";
 import {
   PhoneBoxStyled,
   PhoneFieldBoxStyled,
   IntPrefixesPickerStyled,
+  FormStyled,
+  ButtonStyled
 } from "./YourAccount.styled";
 
 const YourAccount = () => {
@@ -64,7 +65,7 @@ const YourAccount = () => {
               dirty,
             } = formik;
             return (
-              <form onSubmit={handleSubmit}>
+              <FormStyled onSubmit={handleSubmit}>
                 <FieldBox
                   label="Your name"
                   type="text"
@@ -103,13 +104,13 @@ const YourAccount = () => {
                     onChangeYear={handleChange}
                   />
                 </FieldBox>
-                <button
+                <ButtonStyled
+                  label="Continue"
                   type="submit"
+                  width="10px"
                   // disabled={!(dirty && isValid)}
-                >
-                  Continue
-                </button>
-              </form>
+                />
+              </FormStyled>
             );
           }}
         </Formik>
