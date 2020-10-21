@@ -34,3 +34,7 @@ export const ButtonStyled = styled(Button)`
     right: -50px;
   `}
 `;
+
+export const CheckboxHolderStyled = styled.div`
+  display: flex;
+`;

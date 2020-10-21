@@ -5,13 +5,15 @@ import MainWrapper from "Components/MainWrapper";
 import StepBox from "Components/StepBox";
 import FieldBox from "Components/FieldBox";
 import DatePicker from "Components/DatePicker";
+import Checkbox from "Components/Checkbox";
 import yourAccountImg from "Assets/png/people.png";
 import {
   PhoneBoxStyled,
   PhoneFieldBoxStyled,
   IntPrefixesPickerStyled,
   FormStyled,
-  ButtonStyled
+  ButtonStyled,
+  CheckboxHolderStyled,
 } from "./YourAccount.styled";
 
 const YourAccount = () => {
@@ -22,6 +24,8 @@ const YourAccount = () => {
     day: "1",
     month: "January",
     year: "1990",
+    chessNo: true,
+    chessYes: false,
   };
 
   const validationSchema = Yup.object().shape({
@@ -93,6 +97,24 @@ const YourAccount = () => {
                       errorMsg={errors.mobilePhone}
                     />
                   </PhoneBoxStyled>
+                </FieldBox>
+                <FieldBox label="Can you play chess?">
+                  <CheckboxHolderStyled>
+                    <Checkbox
+                      name="chessYes"
+                      label="Yes"
+                      value={values.chessYes}
+                      onChange={handleChange}
+                      checked={values.chessYes}
+                    />
+                    <Checkbox
+                      name="chessNo"
+                      label="No"
+                      value={values.chessNo}
+                      onChange={handleChange}
+                      checked={values.chessNo}
+                    />
+                  </CheckboxHolderStyled>
                 </FieldBox>
                 <FieldBox label="Date of Birth">
                   <DatePicker
