@@ -6,8 +6,10 @@ import StepBox from "Components/StepBox";
 import FieldBox from "Components/FieldBox";
 import DatePicker from "Components/DatePicker";
 import Checkbox from "Components/Checkbox";
+import FormNavSection from "Components/FormNavSection";
 import yourAccountImg from "Assets/png/people.png";
 import {
+  FormSection,
   PhoneBoxStyled,
   PhoneFieldBoxStyled,
   IntPrefixesPickerStyled,
@@ -20,8 +22,8 @@ const YourAccount = () => {
   const [checked, setChecked] = useState(true);
 
   const handleChecked = () => {
-    setChecked(!checked)
-  }
+    setChecked(!checked);
+  };
 
   const initialValues = {
     name: "",
@@ -74,60 +76,68 @@ const YourAccount = () => {
             } = formik;
             return (
               <FormStyled onSubmit={handleSubmit}>
-                <FieldBox
-                  label="Your name"
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={values.name}
-                  onChange={handleChange}
-                  hasError={errors.name && touched.name}
-                  errorMsg={errors.name}
-                />
-                <FieldBox label="Mobile">
-                  <PhoneBoxStyled>
-                    <IntPrefixesPickerStyled
-                      name="mobilePrefix"
-                      value={values.mobilePrefix}
-                      onChange={handleChange}
-                    />
-                    <PhoneFieldBoxStyled
-                      type="tel"
-                      name="mobilePhone"
-                      id="mobilePhone"
-                      value={values.mobilePhone}
-                      onChange={handleChange}
-                      hasError={errors.mobilePhone && touched.mobilePhone}
-                      errorMsg={errors.mobilePhone}
-                    />
-                  </PhoneBoxStyled>
-                </FieldBox>
-                <FieldBox label="Can you play chess?">
-                  <CheckboxHolderStyled>
-                    <Checkbox
-                      name="playChess"
-                      label="Yes"
-                      onChange={handleChecked}
-                      checked={!checked}
-                    />
-                    <Checkbox
-                      name="playChessNot"
-                      label="No"
-                      onChange={handleChecked}
-                      checked={checked}
-                    />
-                  </CheckboxHolderStyled>
-                </FieldBox>
-                <FieldBox label="Date of Birth">
-                  <DatePicker
-                    dayValue={values.day}
-                    monthValue={values.month}
-                    yearValue={values.year}
-                    onChangeDay={handleChange}
-                    onChangeMonth={handleChange}
-                    onChangeYear={handleChange}
+                <FormNavSection itemNo="01">
+                  <FieldBox
+                    label="Your name"
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    hasError={errors.name && touched.name}
+                    errorMsg={errors.name}
                   />
-                </FieldBox>
+                </FormNavSection>
+                <FormNavSection itemNo="02" itemName="Personal">
+                  <FieldBox label="Mobile">
+                    <PhoneBoxStyled>
+                      <IntPrefixesPickerStyled
+                        name="mobilePrefix"
+                        value={values.mobilePrefix}
+                        onChange={handleChange}
+                      />
+                      <PhoneFieldBoxStyled
+                        type="tel"
+                        name="mobilePhone"
+                        id="mobilePhone"
+                        value={values.mobilePhone}
+                        onChange={handleChange}
+                        hasError={errors.mobilePhone && touched.mobilePhone}
+                        errorMsg={errors.mobilePhone}
+                      />
+                    </PhoneBoxStyled>
+                  </FieldBox>
+                </FormNavSection>
+                <FormNavSection itemNo="03">
+                  <FieldBox label="Can you play chess?">
+                    <CheckboxHolderStyled>
+                      <Checkbox
+                        name="playChess"
+                        label="Yes"
+                        onChange={handleChecked}
+                        checked={!checked}
+                      />
+                      <Checkbox
+                        name="playChessNot"
+                        label="No"
+                        onChange={handleChecked}
+                        checked={checked}
+                      />
+                    </CheckboxHolderStyled>
+                  </FieldBox>
+                </FormNavSection>
+                <FormNavSection>
+                  <FieldBox label="Date of Birth">
+                    <DatePicker
+                      dayValue={values.day}
+                      monthValue={values.month}
+                      yearValue={values.year}
+                      onChangeDay={handleChange}
+                      onChangeMonth={handleChange}
+                      onChangeYear={handleChange}
+                    />
+                  </FieldBox>
+                </FormNavSection>
                 <ButtonStyled
                   label="Continue"
                   type="submit"

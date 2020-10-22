@@ -19,8 +19,7 @@ export const CheckboxWrapperStyled = styled.div`
   ${({ checked }) => checked && `border-color: #1BFEC0;`}
 
   &:not(:last-child) {
-    margin-right: 35px;
-    ${media.tablet` margin-right: 25px; `}
+    margin-right: 25px;
   }
 
   &:after {

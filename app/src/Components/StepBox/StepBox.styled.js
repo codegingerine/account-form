@@ -53,11 +53,11 @@ export const FormBoxStyled = styled.div`
       rgba(231, 232, 238, 0.15) 95.81%
     ),
     #fcfcfd;
-  padding: 16px 15px 52px 15px;
+  padding: 16px 15px 72px 15px;
 
 
   ${media.tablet`
-    padding: 42px 51px;
+    padding: 42px 51px 80px 51px;
   `}
 
   &:before {
@@ -85,7 +85,7 @@ export const FormIntroStyled = styled.div`
 
   ${media.tablet`
     width: 322px;
-    margin-bottom: 56px;
+    margin-bottom: 30px;
   `}
 `;
 

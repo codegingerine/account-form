@@ -5,11 +5,6 @@ export const FieldBoxStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
-
-  ${media.tablet`
-    margin-bottom: 24px;
-  `}
 `;
 
 const PadMix = css`
