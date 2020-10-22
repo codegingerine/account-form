@@ -13,7 +13,7 @@ const SelectMix = css`
     ${media.tablet` width: 50px; `}
   }
 
-  &:nth-child(3) {
+  &:nth-child(2) {
     ${media.tablet` width: 134px; `}
 
     &:before {
@@ -45,20 +45,4 @@ const SelectMix = css`
 
 export const SelectStyled = styled(Select)`
   ${SelectMix}
-`;
-
-export const SelectMonthByNoStyled = styled(Select)`
-  ${SelectMix}
-  ${media.tablet`
-    display: none;
-  `}
-`;
-
-export const SelectMonthByNameStyled = styled(Select)`
-  ${SelectMix}
-  display: none;
-
-  ${media.tablet`
-    display: flex;
-  `}
 `;
