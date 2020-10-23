@@ -19,7 +19,7 @@ const months = [
   "November",
   "December",
 ];
-const monthsByIndex = months.map((month, _) => months.indexOf(month) + 1);
+const monthsByIndex = months.map((month, _) => ("0" + (months.indexOf(month) + 1)).slice(-2));
 
 const startYear = 1920;
 const endYear = new Date().getFullYear();
