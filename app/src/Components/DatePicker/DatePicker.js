@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
+import useWindowWidth from "Utils/use-window-width";
+
 import { DatePickerStyled, SelectStyled } from "./DatePicker.styled";
 
 const TABLET_SIZE = 992;
 const days = [...Array(31)].map((_, i) => ("0" + (i + 1)).slice(-2));
 const months = [
-  { name: "January", number: 1 },
-  { name: "February", number: 2 },
-  { name: "March", number: 3 },
-  { name: "April", number: 4 },
-  { name: "May", number: 5 },
-  { name: "June", number: 6 },
-  { name: "July", number: 7 },
-  { name: "August", number: 8 },
-  { name: "September", number: 9 },
-  { name: "October", number: 10 },
-  { name: "November", number: 11 },
-  { name: "December", number: 12 },
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
-const monthsByName = months.map((_, month) => months[month].name);
-const monthsByNumber = months.map((_, month) => months[month].number);
+const monthsByIndex = months.map((month, _) => months.indexOf(month) + 1);
 
 const startYear = 1920;
 const endYear = new Date().getFullYear();
@@ -34,16 +35,8 @@ const DatePicker = ({
   onChangeMonth,
   onChangeYear,
 }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const updateWidth = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  });
+  let windowWidth = useWindowWidth();
+  console.log("render");
 
   return (
     <DatePickerStyled className={className}>
@@ -59,7 +52,7 @@ const DatePicker = ({
         name="month"
         value={monthValue}
         onChange={onChangeMonth}
-        options={windowWidth >= TABLET_SIZE ? monthsByName : monthsByNumber}
+        options={windowWidth >= TABLET_SIZE ? months : monthsByIndex}
         fullBorder
       />
       <SelectStyled
