@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import useWindowWidth from "Utils/use-window-width";
 import { days, months, years, daysLength } from "Utils/date";
@@ -79,5 +80,11 @@ const DatePicker = React.forwardRef(
     );
   }
 );
+
+DatePicker.propTypes = {
+  dayValue: PropTypes.object.isRequired,
+  monthValue: PropTypes.object.isRequired,
+  yearValue: PropTypes.object.isRequired,
+};
 
 export default DatePicker;
