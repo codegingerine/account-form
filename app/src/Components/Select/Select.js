@@ -7,41 +7,51 @@ import {
   OptionStyled,
 } from "./Select.styled";
 
-const Options = ({ options }) => (
+const Options = ({ options, value }) => (
   <>
     {options.map((option) => {
-      return <OptionStyled key={uuidv4()}>{option}</OptionStyled>;
+      return (
+        <OptionStyled key={uuidv4()} value={value}>
+          {option}
+        </OptionStyled>
+      );
     })}
   </>
 );
 
-const Select = ({
-  className,
-  name,
-  value,
-  onChange,
-  options,
-  children,
-  fullBorder,
-  removeIcon,
-}) => {
-  return (
-    <SelectWrapperStyled
-      className={className}
-      fullBorder={fullBorder}
-      removeIcon={removeIcon}
-    >
-      <SelectStyled
-        name={name}
-        value={value}
-        onChange={onChange}
+const Select = React.forwardRef(
+  (
+    {
+      className,
+      name,
+      value,
+      onChange,
+      options,
+      children,
+      fullBorder,
+      removeIcon,
+    },
+    ref
+  ) => {
+    return (
+      <SelectWrapperStyled
+        className={className}
         fullBorder={fullBorder}
+        removeIcon={removeIcon}
       >
-        {children ? children : <Options options={options} />}
-      </SelectStyled>
-    </SelectWrapperStyled>
-  );
-};
+        <SelectStyled
+          name={name}
+          value={value}
+          onChange={onChange}
+          fullBorder={fullBorder}
+          ref={ref}
+        >
+          {children ? children : <Options options={options} />}
+        </SelectStyled>
+      </SelectWrapperStyled>
+    );
+  }
+);
 
 Select.propTypes = {
   className: PropTypes.string,
@@ -52,7 +62,7 @@ Select.propTypes = {
   children: PropTypes.any,
   bottomBorder: PropTypes.string,
   fullBorder: PropTypes.bool,
-  removeIcon:PropTypes.bool,
+  removeIcon: PropTypes.bool,
 };
 
 export default Select;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import MainWrapper from "Components/MainWrapper";
@@ -9,7 +9,6 @@ import Checkbox from "Components/Checkbox";
 import FormNavSection from "Components/FormNavSection";
 import yourAccountImg from "Assets/png/people.png";
 import {
-  FormSection,
   PhoneBoxStyled,
   PhoneFieldBoxStyled,
   IntPrefixesPickerStyled,
@@ -20,6 +19,9 @@ import {
 
 const YourAccount = () => {
   const [checked, setChecked] = useState(true);
+  const dayValueRef = useRef();
+  const monthValueRef = useRef();
+  const yearValueRef = useRef();
 
   const handleChecked = () => {
     setChecked(!checked);
@@ -29,9 +31,6 @@ const YourAccount = () => {
     name: "",
     mobilePrefix: "+48 (PL)",
     mobilePhone: "",
-    day: "1",
-    month: "January",
-    year: "1990",
   };
 
   const validationSchema = Yup.object().shape({
@@ -47,7 +46,12 @@ const YourAccount = () => {
   });
 
   const onSubmit = (values) => {
-    console.log("Form data to submit: ", values);
+    console.log("Form data to submit: ", {
+      ...values,
+      day: dayValueRef.current.value,
+      month: monthValueRef.current.value,
+      year: yearValueRef.current.value,
+    });
   };
 
   return (
@@ -129,12 +133,9 @@ const YourAccount = () => {
                 <FormNavSection>
                   <FieldBox label="Date of Birth">
                     <DatePicker
-                      dayValue={values.day}
-                      monthValue={values.month}
-                      yearValue={values.year}
-                      onChangeDay={handleChange}
-                      onChangeMonth={handleChange}
-                      onChangeYear={handleChange}
+                      dayValue={dayValueRef}
+                      monthValue={monthValueRef}
+                      yearValue={yearValueRef}
                     />
                   </FieldBox>
                 </FormNavSection>

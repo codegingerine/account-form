@@ -71,6 +71,10 @@ export const SelectWrapperStyled = styled.div`
           &:before {
             top: 23px;
             right: 2px;
+
+            ${media.tablet`
+              right: 10px;
+            `}
           }
 
           ${SelectStyled} {

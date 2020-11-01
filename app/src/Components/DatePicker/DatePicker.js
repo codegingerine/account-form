@@ -1,70 +1,83 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import useWindowWidth from "Utils/use-window-width";
-
-import { DatePickerStyled, SelectStyled } from "./DatePicker.styled";
+import { days, months, years, daysLength } from "Utils/date";
+import {
+  DatePickerStyled,
+  SelectStyled,
+  OptionSourceStyled,
+} from "./DatePicker.styled";
 
 const TABLET_SIZE = 992;
-const days = [...Array(31)].map((_, i) => ("0" + (i + 1)).slice(-2));
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-const monthsByIndex = months.map((month, _) => ("0" + (months.indexOf(month) + 1)).slice(-2));
 
-const startYear = 1920;
-const endYear = new Date().getFullYear();
-const yearsRange = parseInt(endYear - startYear);
-let years = [...Array(yearsRange + 1)].map((_, i) => endYear - i);
+const DatePicker = React.forwardRef(
+  ({ className, dayValue, monthValue, yearValue }, ref) => {
+    const [day, setDay] = useState("1");
+    const [month, setMonth] = useState(months[0]);
+    const [year, setYear] = useState("1920");
+    const [daysRange, setDaysRange] = useState();
+    const windowWidth = useWindowWidth();
+    const getDaysLength = daysLength(month, months, year);
+    // console.log("render");
 
-const DatePicker = ({
-  className,
-  dayValue,
-  monthValue,
-  yearValue,
-  onChangeDay,
-  onChangeMonth,
-  onChangeYear,
-}) => {
-  let windowWidth = useWindowWidth();
-  console.log("render");
+    useEffect(() => {
+      setDaysRange(getDaysLength);
+    });
 
-  return (
-    <DatePickerStyled className={className}>
-      <SelectStyled
-        name="day"
-        value={dayValue}
-        onChange={onChangeDay}
-        options={days}
-        fullBorder
-        removeIcon
-      />
-      <SelectStyled
-        name="month"
-        value={monthValue}
-        onChange={onChangeMonth}
-        options={windowWidth >= TABLET_SIZE ? months : monthsByIndex}
-        fullBorder
-      />
-      <SelectStyled
-        name="year"
-        value={yearValue}
-        onChange={onChangeYear}
-        options={years}
-        fullBorder
-        removeIcon
-      />
-    </DatePickerStyled>
-  );
-};
+    const handleDay = (e) => {
+      setDay(e.target.value);
+    };
+
+    const handleMonth = (e) => {
+      setMonth(e.target.value);
+    };
+
+    const handleYear = (e) => {
+      setYear(e.target.value);
+    };
+
+    return (
+      <DatePickerStyled className={className}>
+        <SelectStyled
+          name="day"
+          value={day}
+          ref={dayValue}
+          onChange={handleDay}
+          options={days(daysRange)}
+          fullBorder
+          removeIcon
+        />
+        <SelectStyled
+          name="month"
+          value={month}
+          ref={monthValue}
+          onChange={handleMonth}
+          fullBorder
+        >
+          <>
+            {months.map((item, i) => {
+              return (
+                <OptionSourceStyled key={uuidv4()} value={item}>
+                  {windowWidth >= TABLET_SIZE
+                    ? item
+                    : ("0" + (i + 1)).slice(-2)}
+                </OptionSourceStyled>
+              );
+            })}
+          </>
+        </SelectStyled>
+        <SelectStyled
+          name="year"
+          value={year}
+          ref={yearValue}
+          onChange={handleYear}
+          options={years("1920")}
+          fullBorder
+          removeIcon
+        />
+      </DatePickerStyled>
+    );
+  }
+);
 
 export default DatePicker;

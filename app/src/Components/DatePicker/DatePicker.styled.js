@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { media } from "Utils/media";
 import Select from "Components/Select";
+import { OptionStyled } from "Components/Select/Select.styled";
 
 export const DatePickerStyled = styled.div`
   display: flex;
@@ -15,10 +16,6 @@ const SelectMix = css`
 
   &:nth-child(2) {
     ${media.tablet` width: 134px; `}
-
-    &:before {
-      right: 10px;
-    }
   }
 
   &:last-child {
@@ -46,3 +43,5 @@ const SelectMix = css`
 export const SelectStyled = styled(Select)`
   ${SelectMix}
 `;
+
+export const OptionSourceStyled = styled(OptionStyled)``;
