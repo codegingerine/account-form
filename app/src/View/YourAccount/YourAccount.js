@@ -17,6 +17,8 @@ import {
   CheckboxHolderStyled,
 } from "./YourAccount.styled";
 
+const regExPhone = (item) => item.replace(/\W/gi, '').replace(/(.{3})/g, '$1 ');
+
 const YourAccount = () => {
   const [checked, setChecked] = useState(true);
   const dayValueRef = useRef();
@@ -34,7 +36,7 @@ const YourAccount = () => {
     mobilePrefix: "+48 (PL)",
     mobilePhone: "",
   };
-
+ 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too Short!").required("Required"),
     mobilePhone: Yup.number()
@@ -107,7 +109,7 @@ const YourAccount = () => {
                         type="tel"
                         name="mobilePhone"
                         id="mobilePhone"
-                        value={values.mobilePhone}
+                        value={regExPhone(values.mobilePhone)}
                         onChange={handleChange}
                         hasError={errors.mobilePhone && touched.mobilePhone}
                         errorMsg={errors.mobilePhone}
