@@ -5,7 +5,7 @@ import {
   LabelStyled,
 } from "./Checkbox.styled";
 
-const Checkbox = ({ className, label, name, id, value, onChange, checked }) => {
+const Checkbox = React.forwardRef(({ className, label, name, id, onChange, checked, value }, ref) => {
   return (
     <CheckboxWrapperStyled className={className} checked={checked}>
       <LabelStyled htmlFor={name}>{label}</LabelStyled>
@@ -14,11 +14,12 @@ const Checkbox = ({ className, label, name, id, value, onChange, checked }) => {
         id={id}
         name={name}
         value={value}
+        ref={ref}
         onChange={onChange}
         checked={checked}
       />
     </CheckboxWrapperStyled>
   );
-};
+});
 
 export default Checkbox;

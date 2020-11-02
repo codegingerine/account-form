@@ -22,8 +22,10 @@ const YourAccount = () => {
   const dayValueRef = useRef();
   const monthValueRef = useRef();
   const yearValueRef = useRef();
-
-  const handleChecked = () => {
+  const checkboxRef = useRef();
+  
+  const handleChecked = (e) => {
+    if (!e.target.checked) return;
     setChecked(!checked);
   };
 
@@ -51,6 +53,7 @@ const YourAccount = () => {
       day: dayValueRef.current.value,
       month: monthValueRef.current.value,
       year: yearValueRef.current.value,
+      playChess: checkboxRef.current.value,
     });
   };
 
@@ -118,6 +121,8 @@ const YourAccount = () => {
                       <Checkbox
                         name="playChess"
                         label="Yes"
+                        value={!checked}
+                        ref={checkboxRef}
                         onChange={handleChecked}
                         checked={!checked}
                       />
